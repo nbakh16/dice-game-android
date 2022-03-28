@@ -1,4 +1,4 @@
-package com.id1720430.dicegame
+package com.nbakh.dicegame
 
 import org.junit.Test
 

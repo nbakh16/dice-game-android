@@ -1,4 +1,4 @@
-package com.id1720430.dicegame
+package com.nbakh.dicegame
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4

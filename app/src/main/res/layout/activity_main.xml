@@ -10,10 +10,10 @@
         android:id="@+id/dice1tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="100dp"
-        android:layout_marginTop="140dp"
-        android:text="Dice 1"
-        android:textSize="25sp"
+        android:layout_marginStart="85dp"
+        android:layout_marginTop="200dp"
+        android:text=""
+        android:textSize="22sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -21,10 +21,10 @@
         android:id="@+id/dice2tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="140dp"
-        android:layout_marginEnd="100dp"
-        android:text="Dice 2"
-        android:textSize="25sp"
+        android:layout_marginTop="200dp"
+        android:layout_marginEnd="85dp"
+        android:text=""
+        android:textSize="22sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -32,9 +32,10 @@
         android:id="@+id/sumtv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="300dp"
-        android:text="Sum"
-        android:textSize="25sp"
+        android:layout_marginTop="280dp"
+        android:text=""
+        android:textColor="#FFA500"
+        android:textSize="26sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -43,9 +44,10 @@
         android:id="@+id/rollbtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="20dp"
         android:onClick="rollDice"
         android:text="Roll"
+        android:textSize="25sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
@@ -55,32 +57,47 @@
         android:id="@+id/resulttv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="100dp"
-        android:text=""
-        android:textSize="20sp"
-        android:textColor="@color/teal_200"
+        android:layout_marginTop="50dp"
+        android:text="Your first throw \n    Good luck!"
+        android:textColor="@color/teal_700"
+        android:textSize="22sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/sumtv" />
 
-    <TextView
-        android:id="@+id/testtv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:text="TextView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/rollbtn" />
 
     <TextView
         android:id="@+id/targettv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="35dp"
-        android:layout_marginEnd="35dp"
-        android:text="TextView"
+        android:layout_marginTop="140dp"
+        android:text=""
+        android:textColor="#0000FF"
+        android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/rolldiceiv"
+        android:layout_width="194dp"
+        android:layout_height="156dp"
+        android:layout_marginTop="200dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/dice_throw" />
+
+    <Button
+        android:id="@+id/playagainbtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="goToMainMenu"
+        android:text="Play Again"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rollbtn" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

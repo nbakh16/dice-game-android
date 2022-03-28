@@ -4,6 +4,9 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/_Study/SEIP-AppDev/projects/DiceGame/app/src/main/res/layout/activity_main.xml" value="0.3484375" />
+        <entry key="..\:/_Study/SEIP-AppDev/projects/DiceGameAndroid/app/src/main/res/layout/activity_main.xml" value="0.3625" />
+        <entry key="..\:/_Study/SEIP-AppDev/projects/DiceGameAndroid/app/src/main/res/layout/activity_menu.xml" value="0.3484375" />
+        <entry key="..\:/_Study/SEIP-AppDev/projects/DiceGameAndroid/app/src/main/res/layout/fragment_second.xml" value="0.3625" />
       </map>
     </option>
   </component>
