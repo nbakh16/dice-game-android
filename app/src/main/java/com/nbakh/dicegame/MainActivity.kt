@@ -1,5 +1,6 @@
 package com.nbakh.dicegame
 
+import android.content.Intent
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -11,16 +12,16 @@ import java.util.*
 
 class MainActivity : AppCompatActivity() {
 
-    val rng: Random = Random()
     var isFirstThrow: Boolean = true
 
-    private lateinit var dice1textview: TextView
-    private lateinit var dice2textview: TextView
+    private lateinit var dice1imageview: ImageView
+    private lateinit var dice2imageview: ImageView
     private lateinit var sumtextview: TextView
     private lateinit var resulttextview: TextView
     private lateinit var targettextview: TextView
     private lateinit var rollbutton: Button
     private lateinit var playagainbutton: Button
+    private lateinit var rulesbutton: Button
     private lateinit var rolldiceimageview: ImageView
 
     var dice1: Int = 0
@@ -32,47 +33,66 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        dice1textview = findViewById(R.id.dice1tv)
-        dice2textview = findViewById(R.id.dice2tv)
+        dice1imageview = findViewById(R.id.dice1iv)
+        dice2imageview = findViewById(R.id.dice2iv)
         sumtextview = findViewById(R.id.sumtv)
         resulttextview = findViewById(R.id.resulttv)
         targettextview = findViewById(R.id.targettv)
         rollbutton = findViewById(R.id.rollbtn)
         playagainbutton = findViewById(R.id.playagainbtn)
+        rulesbutton = findViewById(R.id.rulesbtn)
         rolldiceimageview = findViewById(R.id.rolldiceiv)
 
         playagainbutton.visibility = View.INVISIBLE
+        rulesbutton.visibility = View.INVISIBLE
 
     }
 
     fun rollDice(view: View) {
-        dice1 = rng.nextInt(6)+1
-        dice2 = rng.nextInt(6)+1
-        sum = (dice1 + dice2)
-
-        dice1textview.text = "Dice 1\n    ${dice1.toString()}"
-        dice2textview.text = "Dice 2\n    ${dice2.toString()}"
-        sumtextview.text = "-Score-\n    ${sum.toString()}"
-
+        rollDice()
         gameManager()
         rolldiceimageview.imageAlpha = 0
+    }
+
+    fun rollDice() {
+        //dice1
+        dice1 = (1..6).random()
+        val diceImage1 = when(dice1) {
+            1 -> R.drawable.dice_side_1
+            2 -> R.drawable.dice_side_2
+            3 -> R.drawable.dice_side_3
+            4 -> R.drawable.dice_side_4
+            5 -> R.drawable.dice_side_5
+            else -> R.drawable.dice_side_6
+        }
+        dice1imageview.setImageResource(diceImage1)
+
+        //dice2
+        dice2 = (1..6).random()
+        val diceImage2 = when(dice2) {
+            1 -> R.drawable.dice_side_1
+            2 -> R.drawable.dice_side_2
+            3 -> R.drawable.dice_side_3
+            4 -> R.drawable.dice_side_4
+            5 -> R.drawable.dice_side_5
+            else -> R.drawable.dice_side_6
+        }
+        dice2imageview.setImageResource(diceImage2)
+
+        sum = (dice1 + dice2)
+
+        sumtextview.text = "-Score-\n    ${sum.toString()}"
     }
 
     fun gameManager() {
         if(isFirstThrow){
             if(sum==7 || sum==11){
-                resulttextview.text = "You won!"
-                rollbutton.isClickable = false
-                rollbutton.visibility = View.INVISIBLE
-                playagainbutton.visibility = View.VISIBLE
-                sumtextview.setTextColor(Color.BLUE)
+                youWon()
+                resulttextview.text = "Lucky! You Won"
             }
             else if (sum==2 || sum==3 || sum==12){
-                resulttextview.text = "You loose!"
-                resulttextview.setTextColor(Color.RED)
-                rollbutton.isClickable = false
-                rollbutton.visibility = View.INVISIBLE
-                playagainbutton.visibility = View.VISIBLE
+                youLoose()
+                resulttextview.text = "Crap! You Loose"
             }
             else {
                 target = sum
@@ -84,26 +104,41 @@ class MainActivity : AppCompatActivity() {
 
         else if (!isFirstThrow){
             if (sum==7){
-                resulttextview.text = "You loose!"
-                resulttextview.setTextColor(Color.RED)
-                rollbutton.isClickable = false
-                rollbutton.visibility = View.INVISIBLE
-                playagainbutton.visibility = View.VISIBLE
-
+                youLoose()
             }
             else if (sum==target){
-                resulttextview.text = "You won!"
-                rollbutton.isClickable = false
-                rollbutton.visibility = View.INVISIBLE
-                playagainbutton.visibility = View.VISIBLE
-                sumtextview.setTextColor(Color.BLUE)
+                youWon()
             }
         }
     }
 
-    fun goToMainMenu(view: View) {
+    fun youWon(){
+        resulttextview.text = "You Won!"
+        resulttextview.setTextColor(Color.BLUE)
+        TVDesignForWinLoose()
+    }
+    fun youLoose(){
+        resulttextview.text = "You Loose!"
+        resulttextview.setTextColor(Color.RED)
+        TVDesignForWinLoose()
+    }
+
+    fun TVDesignForWinLoose(){
+        resulttextview.textSize = 35.0f
+        resulttextview.setBackgroundResource(R.color.red_orange_light)
+        rollbutton.visibility = View.INVISIBLE
+        playagainbutton.visibility = View.VISIBLE
+        rulesbutton.visibility = View.VISIBLE
+    }
+
+    fun playAgain(view: View) {
         val intent = intent
         finish()
+        startActivity(intent)
+    }
+
+    fun goToMainMenu(view: View) {
+        val intent = Intent(this, MenuActivity::class.java)
         startActivity(intent)
     }
 }
