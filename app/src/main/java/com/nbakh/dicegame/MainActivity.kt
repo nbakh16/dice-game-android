@@ -49,43 +49,28 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun rollDice(view: View) {
-        rollDice()
+        rollingDice()
         gameManager()
         rolldiceimageview.imageAlpha = 0
     }
 
-    fun rollDice() {
+    fun rollingDice() {
         //dice1
         dice1 = (1..6).random()
-        val diceImage1 = when(dice1) {
-            1 -> R.drawable.dice_side_1
-            2 -> R.drawable.dice_side_2
-            3 -> R.drawable.dice_side_3
-            4 -> R.drawable.dice_side_4
-            5 -> R.drawable.dice_side_5
-            else -> R.drawable.dice_side_6
-        }
-        dice1imageview.setImageResource(diceImage1)
+        dice1imageview.setImageResource(diceSides(dice1))
 
         //dice2
         dice2 = (1..6).random()
-        val diceImage2 = when(dice2) {
-            1 -> R.drawable.dice_side_1
-            2 -> R.drawable.dice_side_2
-            3 -> R.drawable.dice_side_3
-            4 -> R.drawable.dice_side_4
-            5 -> R.drawable.dice_side_5
-            else -> R.drawable.dice_side_6
-        }
-        dice2imageview.setImageResource(diceImage2)
+        dice2imageview.setImageResource(diceSides(dice2))
 
+        //score
         sum = (dice1 + dice2)
-
         sumtextview.text = "-Score-\n    ${sum.toString()}"
     }
 
     fun gameManager() {
-        if(isFirstThrow){
+
+        if(isFirstThrow){ //on First throw
             if(sum==7 || sum==11){
                 youWon()
                 resulttextview.text = "Lucky! You Won"
@@ -102,11 +87,11 @@ class MainActivity : AppCompatActivity() {
             isFirstThrow = false
         }
 
-        else if (!isFirstThrow){
+        else if (!isFirstThrow){ //After first throw
             if (sum==7){
                 youLoose()
             }
-            else if (sum==target){
+            else if (sum==target) {
                 youWon()
             }
         }
@@ -115,20 +100,32 @@ class MainActivity : AppCompatActivity() {
     fun youWon(){
         resulttextview.text = "You Won!"
         resulttextview.setTextColor(Color.BLUE)
-        TVDesignForWinLoose()
+        tvDesignForWinLoose()
     }
     fun youLoose(){
         resulttextview.text = "You Loose!"
         resulttextview.setTextColor(Color.RED)
-        TVDesignForWinLoose()
+        tvDesignForWinLoose()
     }
 
-    fun TVDesignForWinLoose(){
+    fun tvDesignForWinLoose(){
         resulttextview.textSize = 35.0f
         resulttextview.setBackgroundResource(R.color.red_orange_light)
         rollbutton.visibility = View.INVISIBLE
         playagainbutton.visibility = View.VISIBLE
         rulesbutton.visibility = View.VISIBLE
+    }
+
+    fun diceSides(dices: Int): Int {
+        val diceImage = when(dices) {
+            1 -> R.drawable.dice_side_1
+            2 -> R.drawable.dice_side_2
+            3 -> R.drawable.dice_side_3
+            4 -> R.drawable.dice_side_4
+            5 -> R.drawable.dice_side_5
+            else -> R.drawable.dice_side_6
+        }
+        return diceImage
     }
 
     fun playAgain(view: View) {

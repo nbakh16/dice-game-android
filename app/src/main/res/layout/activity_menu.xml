@@ -11,7 +11,7 @@
         android:id="@+id/imageView"
         android:layout_width="180dp"
         android:layout_height="180dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="64dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -34,7 +34,7 @@
         android:id="@+id/textView5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="-----Try your luck-----"
+        android:text="----Try your luck----"
         android:textColor="@color/black"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -46,12 +46,12 @@
         android:id="@+id/textView6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="24dp"
         android:background="@color/red_orange_light"
         android:text="Game Rules:\n On your first throw,\n\t
 * 7 or 11 brings you win.\n\t * Craps (2, 3 or 12) means you lose.\n
 Scoring other combinations will make that your Target.\n\t
-* You have to hit your target in 7 turns to win.\n\t
+* You have to hit your Target to win.\n\t
 * You lose by getting a 7 this time."
         android:textColor="@color/black"
         android:textSize="15sp"
@@ -63,10 +63,10 @@ Scoring other combinations will make that your Target.\n\t
         android:id="@+id/playbtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
         android:onClick="playGame"
         android:text="Play"
         android:textSize="30sp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView6" />
